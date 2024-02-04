@@ -1,11 +1,11 @@
-
-
+import AppLayout from '@/components/applayout/AppLayout';
 
 const Home = () => {
-  return (
-    <div>Index</div>
-  );
-}
-
+	return (
+		<AppLayout title='Home'>
+			<div>Index</div>
+		</AppLayout>
+	);
+};
 
 export default Home;
