@@ -5,11 +5,13 @@ import {
 } from 'react-icons/lia';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 const AppHeader = () => {
 	return (
 		<>
-			<header className='h-16 px-3 py-5 mx-auto flex gap-2 max-w-screen-xl justify-between items-center'>
+			<header className='h-16 px-3 py-5 mx-auto mb-4 flex gap-2 max-w-screen-xl justify-between items-center'>
 				<Link href='/'>
 					<Image
 						src='/logo.png'
@@ -19,32 +21,29 @@ const AppHeader = () => {
 					/>
 				</Link>
 				<div className='flex gap-1 w-1/3 justify-between'>
-					<input
+					<Input
 						type='text'
 						placeholder='Поиск'
-						className='px-2 py-1 w-full rounded-md border-solid border-2 border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-transparent'
 					/>
-					<button className='bg-orange-400 hover:bg-orange-300 rounded px-4 py-1'>
+					<Button type='submit'>
 						<LiaSearchSolid
 							size='26'
 							fill='white'
 						/>
-					</button>
+					</Button>
 				</div>
 				<nav className='flex gap-1'>
-					<Link
-						href='/favourite'
-						className='flex items-center gap-1 hover:bg-orange-300 hover:text-white hover:cursor-pointer rounded px-3 py-1'
-					>
-						<LiaHeart size='26' />
-						<span className='flex items-center text-lg'>Favourite</span>
+					<Link href='/favourite'>
+						<Button variant='ghost'>
+							<LiaHeart size='26' />
+							Favourite
+						</Button>
 					</Link>
-					<Link
-						href='/cart'
-						className='flex items-center gap-1 hover:bg-orange-300 hover:text-white hover:cursor-pointer rounded px-3 py-1'
-					>
-						<LiaShoppingCartSolid size='32' />
-						<span className='flex items-center text-lg'>Cart</span>
+					<Link href='/cart'>
+						<Button variant='ghost'>
+							<LiaShoppingCartSolid size='30' />
+							Cart
+						</Button>
 					</Link>
 				</nav>
 			</header>
