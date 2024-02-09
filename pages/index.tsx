@@ -1,13 +1,13 @@
 import CardList from '@/components/CardList';
-import Categories from '@/components/Categories';
 import AppLayout from '@/components/applayout/AppLayout';
+import { useGetProductsQuery } from '@/redux/productsApi';
 
 const Home = () => {
+	const {data = []} = useGetProductsQuery('')
 	return (
 		<AppLayout title='Home'>
 			<div className='mx-auto max-w-screen-xl'>
-				<Categories />
-				<CardList />
+				<CardList products={data} />
 			</div>
 		</AppLayout>
 	);

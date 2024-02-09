@@ -12,7 +12,7 @@ const Meta: FC<PropsWithChildren<IMeta>> = ({
 	return (
 		<>
 			<Head>
-				<title>{getTitle(title)}</title>
+				<title>{title ? getTitle(title) : "Fats Eat"}</title>
 				<meta
 					name='description'
 					content={description}

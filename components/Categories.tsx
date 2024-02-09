@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 
 export enum CategoriesEnum {
+	All = 'All',
 	Burgers = 'Burgers',
 	Pizza = 'Pizza',
 	Drinks = 'Drinks',
@@ -14,6 +15,7 @@ type typeCategory = {
 };
 
 const categories: typeCategory[] = [
+	{ name: CategoriesEnum.All, url: '/' },
 	{ name: CategoriesEnum.Burgers, url: '/burgers' },
 	{ name: CategoriesEnum.Pizza, url: '/pizza' },
 	{ name: CategoriesEnum.Drinks, url: '/drinks' },
