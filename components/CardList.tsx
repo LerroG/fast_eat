@@ -1,7 +1,3 @@
-import {
-	useGetProductsByCategoryQuery,
-	useGetProductsQuery,
-} from '@/redux/productsApi';
 import CardItem from './CardItem';
 import { FC } from 'react';
 import { IProduct } from './types/product';
@@ -14,17 +10,17 @@ type CardList = {
 
 const CardList: FC<CardList> = ({ products }) => {
 	return (
-		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl'>
+		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
 			{products.map(({ id, title, price, image, category }) => (
-					<CardItem
-						key={id}
-						id={id}
-						title={title}
-						price={price}
-						image={image}
-						category={category}
-					/>
-				))}
+				<CardItem
+					key={id}
+					id={id}
+					title={title}
+					price={price}
+					image={image}
+					category={category}
+				/>
+			))}
 		</div>
 	);
 };

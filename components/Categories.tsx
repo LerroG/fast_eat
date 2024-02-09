@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { usePathname } from 'next/navigation';
 
 export enum CategoriesEnum {
 	All = 'All',
@@ -23,14 +24,18 @@ const categories: typeCategory[] = [
 ];
 
 const Categories = () => {
+	const path = usePathname();
+
 	return (
-		<div className='flex gap-2 mb-4'>
+		<div className='flex gap-2 mx-auto max-w-screen-xl'>
 			{categories.map((category) => (
 				<Link
 					href={category.url}
 					key={category.url}
 				>
-					<Button>{category.name}</Button>
+					<Button className={path === category.url ? 'bg-orange-500' : ''}>
+						{category.name}
+					</Button>
 				</Link>
 			))}
 		</div>

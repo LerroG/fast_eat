@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
+import Categories from '../Categories';
 
 const AppHeader = () => {
 	return (
@@ -47,6 +48,7 @@ const AppHeader = () => {
 					</Link>
 				</nav>
 			</header>
+			<Categories />
 		</>
 	);
 };

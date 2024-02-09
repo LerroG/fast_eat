@@ -3,7 +3,6 @@ import AppHeader from './AppHeader';
 import Meta from '../seo/Meta';
 import { IMeta } from '../seo/meta.interface';
 import AppFooter from './AppFooter';
-import Categories from '@/components/Categories';
 
 const AppLayout: FC<PropsWithChildren<IMeta>> = ({
 	title,
@@ -15,11 +14,15 @@ const AppLayout: FC<PropsWithChildren<IMeta>> = ({
 			title={title}
 			description={description}
 		>
-			<AppHeader />
-			<Categories />
-
-			{children}
-			<AppFooter />
+			<div className='flex flex-col h-screen'>
+				<div className='flex-[1_0_auto]'>
+					<AppHeader />
+					<main className='h-full'>{children}</main>
+				</div>
+				<div className='flex-[0_0_auto]'>
+					<AppFooter />
+				</div>
+			</div>
 		</Meta>
 	);
 };

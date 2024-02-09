@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 const CardItem: FC<IProduct> = ({ id, title, price, image }) => {
 	return (
-		<Card>
+		<Card className='hover:cursor-pointer h-[350px]'>
 			<CardContent>
 				<div>{image}</div>
 			</CardContent>
