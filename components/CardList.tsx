@@ -13,11 +13,8 @@ type CardList = {
 };
 
 const CardList: FC<CardList> = ({ products }) => {
-	console.log(products)
-	// const { data = [], error, isLoading } = useGetProductsQuery('');
-	// const { data = [], error, isLoading } = useGetProductsByCategoryQuery(params?.category);
 	return (
-		<div className='grid grid-cols-5 gap-4'>
+		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl'>
 			{products.map(({ id, title, price, image, category }) => (
 					<CardItem
 						key={id}

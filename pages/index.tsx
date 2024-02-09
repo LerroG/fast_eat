@@ -6,9 +6,7 @@ const Home = () => {
 	const {data = []} = useGetProductsQuery('')
 	return (
 		<AppLayout title='Home'>
-			<div className='mx-auto max-w-screen-xl'>
 				<CardList products={data} />
-			</div>
 		</AppLayout>
 	);
 };
