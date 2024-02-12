@@ -1,5 +1,5 @@
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { IProduct } from './types/product';
+import { IProduct } from '../types/product';
 import { FC } from 'react';
 
 const CardItem: FC<IProduct> = ({ id, title, price, image }) => {

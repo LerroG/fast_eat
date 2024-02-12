@@ -1,6 +1,6 @@
 import CardItem from './CardItem';
 import { FC } from 'react';
-import { IProduct } from './types/product';
+import { IProduct } from '@/types/product';
 
 type CardList = {
 	products: IProduct[];
