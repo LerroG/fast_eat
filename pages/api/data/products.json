@@ -58,15 +58,10 @@
 		}
 	],
 	"categories": [
-		{ "name": "All", "url": "/" },
-		{ "name": "Burgers", "url": "/burgers" },
-		{ "name": "Pizza", "url": "/pizza" },
-		{ "name": "Drinks", "url": "/drinks" },
-		{ "name": "Hotdogs", "url": "/hotdogs" }
+		{ "name": "All" },
+		{ "name": "Burgers" },
+		{ "name": "Pizza" },
+		{ "name": "Drinks" },
+		{ "name": "Hotdogs" }
 	]
 }
-
-
-
-
-

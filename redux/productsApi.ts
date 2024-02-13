@@ -5,18 +5,22 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const productsApi = createApi({
 	reducerPath: 'productsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
+	tagTypes: ['Products'],
 	endpoints: (builder) => ({
 		getProducts: builder.query<IProduct[], string>({
-			query: () => '/products',
+			query: (category) => ({
+				url: '/products',
+				params: { _category: category },
+			}),
 		}),
 		getCategories: builder.query<ICategory[], string>({
 			query: () => '/categories',
 		}),
-		getProductsByCategory: builder.query<IProduct[], string>({
-			query: (category) => `/${category}`,
-		}),
 	}),
 });
 
-export const { useGetProductsQuery, useGetProductsByCategoryQuery, useGetCategoriesQuery } =
-	productsApi;
+export const {
+	useLazyGetProductsQuery,
+	useGetProductsQuery,
+	useGetCategoriesQuery,
+} = productsApi;

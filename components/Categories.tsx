@@ -1,23 +1,22 @@
-import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import { Button } from './ui/button';
-import { usePathname } from 'next/navigation';
 import { useGetCategoriesQuery } from '@/redux/productsApi';
+import { AppDispatch } from '@/redux/store';
+import { categoryChange } from '@/redux/filter/filter.slice';
 
 const Categories = () => {
-	const {data = []} = useGetCategoriesQuery('')
-	const path = usePathname();
+	const dispatch = useDispatch<AppDispatch>()
+	const { data = [] } = useGetCategoriesQuery('');
 
 	return (
 		<div className='flex gap-2 mx-auto max-w-screen-xl'>
 			{data.map((category) => (
-				<Link
-					href={category.url}
-					key={category.url}
+				<Button
+					onClick={() => dispatch(categoryChange(category.name))}
+					key={category.name}
 				>
-					<Button className={path === category.url ? 'bg-orange-500' : ''}>
-						{category.name}
-					</Button>
-				</Link>
+					{category.name}
+				</Button>
 			))}
 		</div>
 	);

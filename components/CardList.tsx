@@ -11,7 +11,7 @@ type CardList = {
 const CardList: FC<CardList> = ({ products }) => {
 	return (
 		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
-			{products.map(({ id, title, price, image, category }) => (
+			{products && products.map(({ id, title, price, image, category }) => (
 				<CardItem
 					key={id}
 					id={id}
