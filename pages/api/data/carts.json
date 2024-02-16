@@ -1,0 +1,18 @@
+{
+	"user@test.com": [
+		{
+			"id": "1",
+			"title": "Title 1",
+			"price": 100,
+			"image": "image url 1",
+			"category": "burgers"
+		},
+		{
+			"id": "2",
+			"title": "Title 2",
+			"price": 200,
+			"image": "image url 2",
+			"category": "burgers"
+		}
+	]
+}

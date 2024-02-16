@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { signIn } from 'next-auth/react';
 
 const formSchema = z.object({
-	emailAddress: z.string().email(),
+	email: z.string().email(),
 	password: z.string().min(3),
 });
 
@@ -21,13 +22,19 @@ const Login = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			emailAddress: '',
+			email: '',
 			password: '',
 		},
 	});
 
-	const handleSubmit = (values: z.infer<typeof formSchema>) => {
+	const handleSubmit = async (values: z.infer<typeof formSchema>) => {
 		console.log({ values });
+		 await signIn("credentials", {
+      email: values.email,
+      password: values.password,
+      redirect: true,
+      callbackUrl: "/",
+    });
 	};
 
 	return (
@@ -38,7 +45,7 @@ const Login = () => {
 			>
 				<FormField
 					control={form.control}
-					name='emailAddress'
+					name='email'
 					render={({ field }) => {
 						return (
 							<FormItem>
@@ -78,7 +85,7 @@ const Login = () => {
 					type='submit'
 					className='w-full'
 				>
-					Login
+					Sign in
 				</Button>
 			</form>
 		</Form>

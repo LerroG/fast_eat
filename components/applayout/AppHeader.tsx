@@ -1,6 +1,4 @@
 import {
-	LiaHeart,
-	LiaShoppingCartSolid,
 	LiaSearchSolid,
 } from 'react-icons/lia';
 import Image from 'next/image';
@@ -8,6 +6,7 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import Categories from '../Categories';
+import RightMenu from './appheader/RightMenu';
 
 const AppHeader = () => {
 	return (
@@ -33,20 +32,7 @@ const AppHeader = () => {
 						/>
 					</Button>
 				</div>
-				<nav className='flex gap-1'>
-					<Link href='/favourite'>
-						<Button variant='ghost'>
-							<LiaHeart size='26' />
-							Favourite
-						</Button>
-					</Link>
-					<Link href='/cart'>
-						<Button variant='ghost'>
-							<LiaShoppingCartSolid size='30' />
-							Cart
-						</Button>
-					</Link>
-				</nav>
+				<RightMenu />
 			</header>
 			<Categories />
 		</>

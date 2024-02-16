@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 
 const formSchema = z
 	.object({
-		emailAddress: z.string().email(),
+		email: z.string().email(),
 		password: z.string().min(3),
 		passwordConfirm: z.string(),
 	})
@@ -32,7 +32,7 @@ const Register = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			emailAddress: '',
+			email: '',
 			password: '',
 			passwordConfirm: '',
 		},
@@ -50,7 +50,7 @@ const Register = () => {
 			>
 				<FormField
 					control={form.control}
-					name='emailAddress'
+					name='email'
 					render={({ field }) => {
 						return (
 							<FormItem>
@@ -109,7 +109,7 @@ const Register = () => {
 					type='submit'
 					className='w-full'
 				>
-					Create account
+					Sign up
 				</Button>
 			</form>
 		</Form>
