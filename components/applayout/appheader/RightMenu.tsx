@@ -5,12 +5,6 @@ import { useSession } from 'next-auth/react';
 
 const headerCartAndFavourites = [
 	{
-		name: 'Sign in',
-		icon: <LiaUserCircle size='26' />,
-		url: '/auth',
-		variant: 'default',
-	},
-	{
 		name: 'Favourite',
 		icon: <LiaHeart size='26' />,
 		url: '/favourite',
@@ -25,11 +19,29 @@ const headerCartAndFavourites = [
 ];
 
 const RightMenu = () => {
-	const session = useSession()
-	console.log(session)
+	const { data: session } = useSession();
+	console.log(session);
 	return (
 		<>
 			<nav className='flex gap-1'>
+				{session ? (
+					<Button className='flex items-center gap-1'>
+						<span>
+							<LiaUserCircle size='26' />
+						</span>
+						<span>Sign out</span>
+					</Button>
+				) : (
+					<Link href='/auth'>
+						<Button className='flex items-center gap-1'>
+							<span>
+								<LiaUserCircle size='26' />
+							</span>
+							<span>Sign in</span>
+						</Button>
+					</Link>
+				)}
+
 				{headerCartAndFavourites.map(({ name, icon, url, variant }) => (
 					<Link
 						href={url}
