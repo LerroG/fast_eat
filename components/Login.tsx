@@ -28,7 +28,6 @@ const Login = () => {
 	});
 
 	const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-		console.log({ values });
 		 await signIn("credentials", {
       email: values.email,
       password: values.password,

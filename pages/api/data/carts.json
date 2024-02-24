@@ -1,18 +1,20 @@
 {
-	"user@test.com": [
+	"user@dev.com": [
 		{
 			"id": "1",
-			"title": "Title 1",
-			"price": 100,
-			"image": "image url 1",
-			"category": "burgers"
+			"title": "Burger",
+			"price": "23000",
+			"image": "/burger_1.jpg",
+			"category": "burgers",
+			"totalCount": "2"
 		},
 		{
 			"id": "2",
-			"title": "Title 2",
-			"price": 200,
-			"image": "image url 2",
-			"category": "burgers"
+			"title": "Cheeseburger",
+			"price": "25000",
+			"image": "/cheeseburger_1.jpg",
+			"category": "burgers",
+			"totalCount": "3"
 		}
 	]
 }

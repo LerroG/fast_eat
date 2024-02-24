@@ -13,7 +13,7 @@ const Categories = () => {
 	const { data = [] } = useGetCategoriesQuery('');
 
 	return (
-		<div className='flex gap-2 mx-auto max-w-screen-xl'>
+		<div className='flex gap-2 mx-auto mb-4 max-w-screen-xl'>
 			{data.map((category) => (
 				<Button
 					onClick={() => {

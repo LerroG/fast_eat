@@ -1,7 +1,7 @@
 import { LiaHeart, LiaShoppingCartSolid, LiaUserCircle } from 'react-icons/lia';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { useSession } from 'next-auth/react';
+import { FC } from 'react';
 
 const headerCartAndFavourites = [
 	{
@@ -18,9 +18,7 @@ const headerCartAndFavourites = [
 	},
 ];
 
-const RightMenu = () => {
-	const { data: session } = useSession();
-	console.log(session);
+const RightMenu: FC<any> = ({ session }) => {
 	return (
 		<>
 			<nav className='flex gap-1'>

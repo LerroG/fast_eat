@@ -1,7 +1,7 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import type { NextAuthOptions, User } from 'next-auth';
-import users from '../data/users.json'
+import users from '../data/users.json';
 
 export const authOptions: NextAuthOptions = {
 	providers: [
@@ -20,31 +20,35 @@ export const authOptions: NextAuthOptions = {
 				},
 			},
 			async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+				if (!credentials?.email || !credentials.password) return null;
 
-        const currentUser = users.users.find(user => user.email === credentials.email)
+				const currentUser = users.users.find(
+					(user) => user.email === credentials.email
+				);
 
-        if (currentUser && currentUser.password === credentials.password) {
-          const { password, ...userWithoutPass } = currentUser;
+				if (currentUser && currentUser.password === credentials.password) {
+					const { password, ...userWithoutPass } = currentUser;
 
-          return userWithoutPass as User;
-        }
+					return userWithoutPass as User;
+				}
 
-        return null
+				return null;
 			},
 		}),
 	],
-
-	callbacks: {
-		async jwt({ token, user }) {
-			return { ...token, ...user };
-		},
-		async session({ session, token, user }) {
-			session.user = token;
-
-			return session;
-		},
-	},
+	// callbacks: {
+	// 	async jwt({ user, token, session, account,profile }) {
+	// 		console.log({ user, token, session, account, profile });
+	// 		return token;
+	// 	},
+	// 	async session({ session, token, user }) {
+	// 		return session;
+	// 	},
+	// },
+	// secret: process.env.NEXTAUTH_SECRET,
+	// session: {
+	// 	strategy: 'jwt',
+	// },
 
 	pages: {
 		signIn: '/auth',

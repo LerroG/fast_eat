@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    console.log("token: ", req.nextauth.token);
 
     if (req.nextUrl.pathname.startsWith("/admin") && req.nextauth.token?.role !== "admin")
       return NextResponse.rewrite(

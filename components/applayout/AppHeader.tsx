@@ -7,8 +7,10 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import Categories from '../Categories';
 import RightMenu from './appheader/RightMenu';
+import { useSession } from 'next-auth/react';
 
 const AppHeader = () => {
+	const { data: session } = useSession();
 	return (
 		<>
 			<header className='h-16 px-3 py-5 mx-auto mb-4 flex gap-2 max-w-screen-xl justify-between items-center'>
@@ -32,7 +34,7 @@ const AppHeader = () => {
 						/>
 					</Button>
 				</div>
-				<RightMenu />
+				<RightMenu session={session} />
 			</header>
 			<Categories />
 		</>
