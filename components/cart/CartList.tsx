@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import Counter from './Counter';
 import { ICart } from '@/types/cart';
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import CartItem from './CartItem';
 
 type CartList = {
 	cart: ICart[];
@@ -10,30 +11,26 @@ type CartList = {
 };
 
 const CartList: FC<CartList> = ({ cart }) => {
-	console.log(cart)
+	const totalCartCost = useSelector(
+		(state: RootState) => state.cartSlice.totalCartCost
+	);
+
 	return (
-		<div className='mx-auto max-w-screen-xl h-[120px] my-4'>
-			{cart && cart.map(({ id, title, price, image, category, totalCount }) => (
-				<div
-					key={id}
-					className='flex items-center mb-1 border px-3'
-				>
-					<Image
-						src={image}
-						width={100}
-						height={100}
-						alt={title}
+		<div className='mx-auto max-w-screen-xl h-[120px] my-2'>
+			{cart &&
+				cart.map((cartItem) => (
+					<CartItem
+						key={cartItem.id}
+						cartItem={cartItem}
 					/>
-					<div className='ml-5 w-40'>
-						<div className='text-lg font-semibold'>{title}</div>
-						<div className=''>{price} сум</div>
-						<div className='bg-orange-300 px-2 py-05 mt-3 w-min rounded-full text-sm'>
-							{category}
-						</div>
-					</div>
-					<Counter counter={totalCount} />
+				))}
+			<div className='flex gap-2 justify-end items-end mt-4'>
+				<div className='bg-orange-400 p-2 rounded text-white'>
+					<span className='text-xl'>Total Cost: </span>
+					<span className='font-bold text-2xl'>{totalCartCost}</span>
+					<span className='text-xl ml-2'>сум</span>
 				</div>
-			))}
+			</div>
 		</div>
 	);
 };

@@ -12,8 +12,8 @@ export const filterSlice = createSlice({
 	name: 'filter',
 	initialState,
 	reducers: {
-		categoryChange: (state, action) => {
-			state.category = action.payload
+		categoryChange: (state, { payload }: PayloadAction<string>) => {
+			state.category = payload;
 		},
 	},
 });

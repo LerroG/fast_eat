@@ -20,7 +20,7 @@ const AppLayout: FC<PropsWithChildren<IMeta>> = ({
 					<main className='h-full'>{children}</main>
 				</div>
 				<div className='flex-[0_0_auto]'>
-					<AppFooter />
+					{/* <AppFooter /> */}
 				</div>
 			</div>
 		</Meta>

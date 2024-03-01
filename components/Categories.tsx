@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import { Button } from './ui/button';
 import { useGetCategoriesQuery } from '@/redux/productsApi';
 import { AppDispatch, RootState } from '@/redux/store';

@@ -1,25 +1,42 @@
 import { LiaPlusCircleSolid, LiaMinusCircleSolid } from 'react-icons/lia';
-import { Input } from '../ui/input';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { useUpdateCartItemMutation } from '@/redux/cartApi';
 
 type CounterType = {
 	counter: number;
+	id: string;
 };
 
-const Counter: FC<CounterType> = ({ counter }) => {
+const Counter: FC<CounterType> = ({ counter, id }) => {
+	const [counterValue, setCounterValue] = useState(counter);
+	const [updateCartCount, {}] = useUpdateCartItemMutation();
+
+	const handleCountUpdatePlus = () => {
+		let counterChangeValue = counter + 1;
+		setCounterValue(counterChangeValue);
+		updateCartCount({ id, totalCount: counterChangeValue });
+	};
+
+	const handleCountUpdateMinus = () => {
+		if (counter > 1) {
+			let counterChangeValue = counter - 1;
+			setCounterValue(counterChangeValue);
+			updateCartCount({ id, totalCount: counterChangeValue });
+		}
+	};
+
 	return (
-		<div className=' flex items-center gap-2 border p-1 rounded-full h-10'>
+		<div className='flex items-center gap-2 border p-1 rounded-full h-10'>
 			<LiaMinusCircleSolid
 				size='28'
 				className='hover:cursor-pointer hover:text-gray-400'
+				onClick={handleCountUpdateMinus}
 			/>
-			<Input
-				value={counter}
-				className='h-8 w-12 rounded-sm'
-			/>
+			<div className='p-1 text-lg font-medium'>{counterValue}</div>
 			<LiaPlusCircleSolid
 				size='28'
 				className='hover:cursor-pointer hover:text-gray-400'
+				onClick={handleCountUpdatePlus}
 			/>
 		</div>
 	);

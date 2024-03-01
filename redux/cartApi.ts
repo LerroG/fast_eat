@@ -10,16 +10,29 @@ export const cartApi = createApi({
 			query: () => ({
 				url: '/cart',
 			}),
+			providesTags: ['Cart'],
 		}),
-		updateCartItem: builder.mutation<ICart, ICart>({
-			query: (cartItem) => ({
-				url: '/cart',
-				method: 'PUT',
-				body: cartItem,
-			}),
-			invalidatesTags: ['Cart'],
-		}),
+		updateCartItem: builder.mutation<ICart, { id: string; totalCount: number }>(
+			{
+				query: (cartItem) => ({
+					url: '/cart',
+					method: 'PATCH',
+					body: cartItem,
+				}),
+				invalidatesTags: ['Cart'],
+			}
+		),
+		deleteCartItem: builder.mutation<ICart, ICart>(
+			{
+				query: (cartItem) => ({
+					url: '/cart',
+					method: 'DELETE',
+					body: cartItem,
+				}),
+				invalidatesTags: ['Cart'],
+			}
+		),
 	}),
 });
 
-export const { useGetCartQuery } = cartApi;
+export const { useGetCartQuery, useUpdateCartItemMutation, useDeleteCartItemMutation } = cartApi;
