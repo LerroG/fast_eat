@@ -48,6 +48,20 @@ export default async function handler(
 			res.status(200).json(currentUserCart);
 		}
 	}
+	if (req.method === 'PUT') {
+		if (currentUserEmail) {
+			const cartItem = req.body;
+
+			const addToCart = currentUserCart?.cart.some(
+				(item) => item.id === cartItem.id
+			);
+
+			if (!addToCart) {
+				currentUserCart?.cart.push(cartItem)
+				res.status(200).json(currentUserCart);
+			}
+		}
+	}
 
 	res.status(200).json({});
 }
