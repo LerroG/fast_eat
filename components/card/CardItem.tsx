@@ -6,9 +6,9 @@ import {
 	LiaHeartSolid,
 } from 'react-icons/lia';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { IProduct } from '../types/product';
+import { IProduct } from '../../types/product';
 import { FC } from 'react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import {
 	useAddCartItemMutation,
 	useDeleteCartItemMutation,
@@ -56,6 +56,9 @@ const CardItem: FC<CardType> = ({ card }) => {
 		<Card className='hover:cursor-pointer h-[350px]'>
 			<CardContent className='h-2/3'>
 				<Button
+					title={
+						isExsistsInFavourites ? 'Remove from favourite' : 'Add to favourite'
+					}
 					variant='outline'
 					className='relative top-3 left-44 p-1 max-h-8 max-w-8 rounded-full '
 					onClick={handleToggleToFavourites}

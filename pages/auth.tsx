@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Login from '@/components/Login';
-import Register from '@/components/Register';
+import Login from '@/components/auth/Login';
+import Register from '@/components/auth/Register';
 import { Button } from '@/components/ui/button';
 
 const buttonType = [

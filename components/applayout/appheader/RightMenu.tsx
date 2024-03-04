@@ -2,6 +2,7 @@ import { LiaHeart, LiaShoppingCartSolid, LiaUserCircle } from 'react-icons/lia';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FC } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 const headerCartAndFavourites = [
 	{
@@ -18,12 +19,21 @@ const headerCartAndFavourites = [
 	},
 ];
 
-const RightMenu: FC<any> = ({ session }) => {
+const RightMenu: FC = () => {
+	const { data: session } = useSession();
+
+	const handleSubmit = async () => {
+		await signOut({ redirect: false });
+	};
+
 	return (
 		<>
 			<nav className='flex gap-1'>
 				{session ? (
-					<Button className='flex items-center gap-1'>
+					<Button
+						onClick={handleSubmit}
+						className='flex items-center gap-1'
+					>
 						<span>
 							<LiaUserCircle size='26' />
 						</span>

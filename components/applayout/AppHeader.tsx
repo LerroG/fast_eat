@@ -3,16 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import Categories from '../Categories';
+import Categories from './appheader/Categories';
 import RightMenu from './appheader/RightMenu';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 const categoriesNotRenderPaths = ['/cart', '/favourite'];
 
 const AppHeader = () => {
 	const { pathname } = useRouter();
-	const { data: session } = useSession();
+	
 
 	const categoriesAndSearchNeed = categoriesNotRenderPaths.includes(pathname);
 
@@ -44,7 +43,7 @@ const AppHeader = () => {
 					</div>
 				)}
 
-				<RightMenu session={session} />
+				<RightMenu />
 			</header>
 			{categoriesAndSearchNeed ? <></> : <Categories />}
 		</>
