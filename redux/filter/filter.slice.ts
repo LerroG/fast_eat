@@ -1,11 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface FilterState {
+export interface FilterState {
 	category: string;
+	search: string;
 }
 
 const initialState: FilterState = {
 	category: 'All',
+	search: '',
 };
 
 export const filterSlice = createSlice({
@@ -15,8 +17,11 @@ export const filterSlice = createSlice({
 		categoryChange: (state, { payload }: PayloadAction<string>) => {
 			state.category = payload;
 		},
+		searchInput: (state, { payload }: PayloadAction<string>) => {
+			state.search = payload;
+		},
 	},
 });
 
-export const { categoryChange } = filterSlice.actions;
+export const { categoryChange, searchInput } = filterSlice.actions;
 export default filterSlice.reducer;
