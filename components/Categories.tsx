@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './ui/button';
 import { useGetCategoriesQuery } from '@/redux/productsApi';
-import { AppDispatch, RootState } from '@/redux/store';
 import { categoryChange } from '@/redux/filter/filter.slice';
+import { useAppDispatch, useAppSelector } from '@/redux/storeHooks';
 
 const Categories = () => {
-	const currentCategory = useSelector(
-		(state: RootState) => state.filterSlice.category
+	const currentCategory = useAppSelector(
+		(state) => state.filterSlice.category
 	);
-	const dispatch = useDispatch<AppDispatch>();
+	const dispatch = useAppDispatch();
 	const { data = [] } = useGetCategoriesQuery('');
 
 	return (

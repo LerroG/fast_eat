@@ -1,11 +1,10 @@
 import CardList from '@/components/CardList';
 import AppLayout from '@/components/applayout/AppLayout';
 import { useGetProductsQuery } from '@/redux/productsApi';
-import { RootState } from '@/redux/store';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/storeHooks';
 
 const Home = () => {
-	const filter = useSelector((state:RootState) => state.filterSlice.category)
+	const filter = useAppSelector((state) => state.filterSlice.category)
 	const {data: products = []} = useGetProductsQuery(filter)
 	return (
 		<AppLayout title='Home'>

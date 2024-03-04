@@ -1,19 +1,14 @@
-import { ICart } from '@/types/cart';
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store';
 import CartItem from './CartItem';
+import { useAppSelector } from '@/redux/storeHooks';
 
-type CartList = {
-	cart: ICart[];
-	isLoading?: boolean;
-	isError?: boolean;
-};
 
-const CartList: FC<CartList> = ({ cart }) => {
-	const totalCartCost = useSelector(
-		(state: RootState) => state.cartSlice.totalCartCost
+
+const CartList: FC = () => {
+	const totalCartCost = useAppSelector(
+		(state) => state.cartSlice.totalCartCost
 	);
+	const cart = useAppSelector((state) => state.cartSlice.cart);
 
 	return (
 		<div className='mx-auto max-w-screen-xl h-[120px] my-2'>

@@ -3,12 +3,20 @@ import AppHeader from './AppHeader';
 import Meta from '../seo/Meta';
 import { IMeta } from '../seo/meta.interface';
 import AppFooter from './AppFooter';
+import { cartApi } from '@/redux/cartApi';
+import { useAppDispatch } from '@/redux/storeHooks';
+import { favouriteApi } from '@/redux/favouriteApi';
 
 const AppLayout: FC<PropsWithChildren<IMeta>> = ({
 	title,
 	description,
 	children,
 }) => {
+	const dispatch = useAppDispatch()
+
+	dispatch(cartApi.endpoints.getCart.initiate(null))
+	dispatch(favouriteApi.endpoints.getFavourite.initiate(null))
+
 	return (
 		<Meta
 			title={title}
