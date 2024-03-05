@@ -3,10 +3,12 @@ import { favouriteApi } from '../favouriteApi';
 import { IFavourite } from '@/types/favourite';
 
 interface FavouriteState {
+	isLoading: boolean;
 	favourite: IFavourite[];
 }
 
 const initialState: FavouriteState = {
+	isLoading: false,
 	favourite: [],
 };
 
@@ -15,12 +17,17 @@ export const favouriteSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addMatcher(
-			favouriteApi.endpoints.getFavourite.matchFulfilled,
-			(state, { payload }: PayloadAction<IFavourite[]>) => {
-				state.favourite = payload;
-			}
-		);
+		builder
+			.addMatcher(favouriteApi.endpoints.getFavourite.matchPending, (state) => {
+				state.isLoading = true;
+			})
+			.addMatcher(
+				favouriteApi.endpoints.getFavourite.matchFulfilled,
+				(state, { payload }: PayloadAction<IFavourite[]>) => {
+					state.isLoading = false;
+					state.favourite = payload;
+				}
+			);
 	},
 });
 

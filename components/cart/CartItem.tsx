@@ -17,7 +17,7 @@ const CartItem: FC<CartItemProps> = ({ cartItem }) => {
 	};
 
 	return (
-		<div className='mx-auto max-w-screen-xl h-[120px] flex justify-between items-center border px-3 my-2 rounded-md'>
+		<div className='flex justify-between items-center border px-3 my-2 rounded-md'>
 			<div className='flex'>
 				<div className='flex'>
 					<Image

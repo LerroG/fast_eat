@@ -1,6 +1,7 @@
 import CardItem from './CardItem';
 import { FC } from 'react';
 import { IProduct } from '@/types/product';
+import SceletonCard from '../skeleton/SkeletonCard';
 
 type CardList = {
 	products: IProduct[];
@@ -8,7 +9,16 @@ type CardList = {
 	isError?: boolean;
 };
 
-const CardList: FC<CardList> = ({ products }) => {
+const CardList: FC<CardList> = ({ products, isLoading }) => {
+	if (isLoading) {
+		return (
+			<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
+				{[...new Array(10)].map((_, index) => (
+					<SceletonCard key={index} />
+				))}
+			</div>
+		);
+	}
 	return (
 		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
 			{products &&

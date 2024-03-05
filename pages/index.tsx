@@ -5,10 +5,13 @@ import { useAppSelector } from '@/redux/storeHooks';
 
 const Home = () => {
 	const filter = useAppSelector((state) => state.filterSlice);
-	const { data: products = [] } = useGetProductsQuery(filter);
+	const { data: products = [], isLoading } = useGetProductsQuery(filter);
 	return (
 		<AppLayout title='Home'>
-			<CardList products={products} />
+			<CardList
+				products={products}
+				isLoading={isLoading}
+			/>
 		</AppLayout>
 	);
 };

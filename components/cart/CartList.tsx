@@ -1,14 +1,29 @@
 import { FC } from 'react';
 import CartItem from './CartItem';
 import { useAppSelector } from '@/redux/storeHooks';
-
-
+import SkeletonCartAndFavourite from '../skeleton/SkeletonCartAndFavourite';
 
 const CartList: FC = () => {
 	const totalCartCost = useAppSelector(
 		(state) => state.cartSlice.totalCartCost
 	);
 	const cart = useAppSelector((state) => state.cartSlice.cart);
+	const isLoading = useAppSelector((state) => state.cartSlice.isLoading);
+
+	if (isLoading) {
+		return (
+			<>
+				{[
+					...new Array(4).map((_, index) => (
+						<SkeletonCartAndFavourite
+							type='cart'
+							key={index}
+						/>
+					)),
+				]}
+			</>
+		);
+	}
 
 	return (
 		<div className='mx-auto max-w-screen-xl h-[120px] my-2'>
