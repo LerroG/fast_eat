@@ -4,6 +4,7 @@ import { ICart } from '@/types/cart';
 import { FC } from 'react';
 import { Button } from '../ui/button';
 import { useDeleteCartItemMutation } from '@/redux/cartApi';
+import { LiaTrashAltSolid } from 'react-icons/lia';
 
 interface CartItemProps {
 	cartItem: ICart;
@@ -34,18 +35,23 @@ const CartItem: FC<CartItemProps> = ({ cartItem }) => {
 						</div>
 					</div>
 				</div>
-				<div className='flex items-center'>
+				<div className='flex max-sm:flex-col max-sm:justify-center items-center'>
 					<Counter
 						counter={cartItem.totalCount}
 						id={cartItem.id}
 					/>
 					<div>
-						<div className='ml-2'>{cartItem.totalCount * +cartItem.price}</div>
+						<div className='sm:ml-2'>{cartItem.totalCount * +cartItem.price} сум</div>
 					</div>
 				</div>
 			</div>
-			<div className='flex mr-2'>
-				<Button onClick={handleDeleteCartItem}>Delete from cart</Button>
+			<div className='flex mx-2'>
+				<Button onClick={handleDeleteCartItem}>
+					<span className='max-sm:hidden'>Delete from cart</span>
+					<span>
+						<LiaTrashAltSolid size='22' />
+					</span>
+				</Button>
 			</div>
 		</div>
 	);

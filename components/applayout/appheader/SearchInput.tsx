@@ -34,7 +34,7 @@ const SearchInput = () => {
 	};
 
 	return (
-		<div className='flex relative items-center gap-1 w-1/3 justify-between'>
+		<div className='flex relative items-center gap-1 w-full md:w-1/3 lg:w-1/3 justify-between'>
 			<Input
 				ref={inputRef}
 				value={searchValue}

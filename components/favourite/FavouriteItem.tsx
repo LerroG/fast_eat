@@ -3,6 +3,7 @@ import { IFavourite } from '@/types/favourite';
 import { FC } from 'react';
 import { Button } from '../ui/button';
 import { useDeleteFavouriteItemMutation } from '@/redux/favouriteApi';
+import { LiaTrashAltSolid } from 'react-icons/lia';
 
 interface FavouriteItem {
 	favouriteItem: IFavourite;
@@ -35,7 +36,12 @@ const FavouriteItem: FC<FavouriteItem> = ({ favouriteItem }) => {
 				</div>
 			</div>
 			<div className='flex mr-2'>
-				<Button onClick={handleDeleteFavouriteItem}>Delete from favourite</Button>
+				<Button onClick={handleDeleteFavouriteItem}>
+					<span className='max-sm:hidden'>Delete from favourite</span>
+					<span>
+						<LiaTrashAltSolid size='22' />
+					</span>
+				</Button>
 			</div>
 		</div>
 	);

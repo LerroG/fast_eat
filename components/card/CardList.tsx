@@ -12,7 +12,7 @@ type CardList = {
 const CardList: FC<CardList> = ({ products, isLoading }) => {
 	if (isLoading) {
 		return (
-			<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
+			<div className='grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 px-6 xl:px-0 gap-4 mx-auto max-w-screen-xl my-4'>
 				{[...new Array(10)].map((_, index) => (
 					<SceletonCard key={index} />
 				))}
@@ -20,7 +20,7 @@ const CardList: FC<CardList> = ({ products, isLoading }) => {
 		);
 	}
 	return (
-		<div className='grid grid-cols-5 gap-4 mx-auto max-w-screen-xl my-4'>
+		<div className='grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 px-6 xl:px-0 gap-4 mx-auto max-w-screen-xl my-4'>
 			{products &&
 				products.map((card) => (
 					<CardItem

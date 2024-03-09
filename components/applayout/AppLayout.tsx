@@ -22,7 +22,7 @@ const AppLayout: FC<PropsWithChildren<IMeta>> = ({
 			title={title}
 			description={description}
 		>
-			<div className='flex flex-col h-screen'>
+			<div className='flex flex-col h-[101vh]'>
 				<div className='flex-[1_0_auto]'>
 					<AppHeader />
 					<main className='h-full'>{children}</main>

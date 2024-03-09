@@ -28,7 +28,7 @@ const RightMenu: FC = () => {
 
 	return (
 		<>
-			<nav className='flex gap-1'>
+			<nav className='flex gap-1 max-sm:hidden'>
 				{session ? (
 					<Button
 						onClick={handleSubmit}
@@ -37,7 +37,7 @@ const RightMenu: FC = () => {
 						<span>
 							<LiaUserCircle size='26' />
 						</span>
-						<span>Sign out</span>
+						<span className='max-md:hidden'>Sign out</span>
 					</Button>
 				) : (
 					<Link href='/auth'>
@@ -60,7 +60,7 @@ const RightMenu: FC = () => {
 							className='flex items-center gap-1'
 						>
 							<span>{icon}</span>
-							<span>{name}</span>
+							<span className='max-md:hidden'>{name}</span>
 						</Button>
 					</Link>
 				))}

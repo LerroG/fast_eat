@@ -55,27 +55,30 @@ const CardItem: FC<CardType> = ({ card }) => {
 	return (
 		<Card className='hover:cursor-pointer h-[350px]'>
 			<CardContent className='h-2/3'>
-				<Button
-					title={
-						isExsistsInFavourites ? 'Remove from favourite' : 'Add to favourite'
-					}
-					variant='outline'
-					className='relative top-3 left-44 p-1 max-h-8 max-w-8 rounded-full '
-					onClick={handleToggleToFavourites}
-				>
-					{isExsistsInFavourites ? (
-						<LiaHeartSolid
-							className='fill-gray-600'
-							size='20'
-						/>
-					) : (
-						<LiaHeart
-							className='fill-gray-600'
-							size='20'
-						/>
-					)}
-				</Button>
-				<div>
+				<div className='relative flex justify-center'>
+					<Button
+						title={
+							isExsistsInFavourites
+								? 'Remove from favourite'
+								: 'Add to favourite'
+						}
+						variant='outline'
+						className='absolute top-2 -right-3 p-1 max-h-8 max-w-8 rounded-full'
+						onClick={handleToggleToFavourites}
+					>
+						{isExsistsInFavourites ? (
+							<LiaHeartSolid
+								className='fill-gray-600'
+								size='20'
+							/>
+						) : (
+							<LiaHeart
+								className='fill-gray-600'
+								size='20'
+							/>
+						)}
+					</Button>
+
 					<Image
 						src={`${card.image}`}
 						width={200}
@@ -86,10 +89,10 @@ const CardItem: FC<CardType> = ({ card }) => {
 			</CardContent>
 			<CardFooter className='flex-col h-1/3'>
 				<div className='flex justify-center w-full h-1/2'>
-					<span className='font-bold'>{card.title}</span>
+					<span className='font-bold max-xl:text-lg'>{card.title}</span>
 				</div>
 				<div className='flex items-center justify-between w-full h-1/2'>
-					<span className='font-medium'>{card.price} сум</span>
+					<span className='font-medium max-xl:text-lg'>{card.price} сум</span>
 					<Button
 						title={isExsistsInCart ? 'Remove from cart' : 'Add to cart'}
 						onClick={handleToggleToCart}
