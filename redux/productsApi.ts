@@ -5,7 +5,7 @@ import { FilterState } from './filter/filter.slice';
 
 export const productsApi = createApi({
 	reducerPath: 'productsApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
+	baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
 	tagTypes: ['Products'],
 	endpoints: (builder) => ({
 		getProducts: builder.query<IProduct[], FilterState>({

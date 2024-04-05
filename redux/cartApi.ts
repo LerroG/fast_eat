@@ -1,10 +1,9 @@
 import { ICart } from '@/types/cart';
-import { IProduct } from '@/types/product';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const cartApi = createApi({
 	reducerPath: 'cartApi',
-	baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api' }),
+	baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
 	tagTypes: ['Cart'],
 	endpoints: (builder) => ({
 		getCart: builder.query<ICart[], null>({
