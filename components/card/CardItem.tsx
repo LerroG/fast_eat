@@ -15,9 +15,10 @@ import {
 } from '@/redux/cartApi';
 import { useAppSelector } from '@/redux/storeHooks';
 import {
-	useAddFavouriteItemMutation,
-	useDeleteFavouriteItemMutation,
-} from '@/redux/favouriteApi';
+	useAddFavoriteItemMutation,
+	useDeleteFavoriteItemMutation,
+} from '@/redux/favoriteApi';
+import { useSession } from 'next-auth/react';
 
 type CardType = {
 	card: IProduct;
@@ -26,30 +27,35 @@ type CardType = {
 const CardItem: FC<CardType> = ({ card }) => {
 	const [addToCart, {}] = useAddCartItemMutation();
 	const [deleteCartItem, {}] = useDeleteCartItemMutation();
-	const [addToFavourites, {}] = useAddFavouriteItemMutation();
-	const [deleteFavouritesItem, {}] = useDeleteFavouriteItemMutation();
+	const [addToFavorites, {}] = useAddFavoriteItemMutation();
+	const [deleteFavoritesItem, {}] = useDeleteFavoriteItemMutation();
+	const { data: session } = useSession();
 
 	const cart = useAppSelector((state) => state.cartSlice.cart);
-	const favourite = useAppSelector((state) => state.favouriteSlice.favourite);
+	const favorite = useAppSelector((state) => state.favoriteSlice.favorite);
 
 	const isExsistsInCart = cart.some((item) => item.id === card.id);
-	const isExsistsInFavourites = favourite.some((item) => item.id === card.id);
+	const isExsistsInFavorites = favorite.some((item) => item.id === card.id);
 
 	const handleToggleToCart = () => {
-		if (isExsistsInCart) {
-			deleteCartItem({ ...card, totalCount: 1 });
-			return;
+		if (session) {
+			if (isExsistsInCart) {
+				deleteCartItem({ ...card, totalCount: 1 });
+				return;
+			}
+			addToCart({ ...card, totalCount: 1 });
 		}
-		addToCart({ ...card, totalCount: 1 });
 	};
 
-	const handleToggleToFavourites = () => {
-		if (isExsistsInFavourites) {
-			deleteFavouritesItem(card);
+	const handleToggleToFavorites = () => {
+		if (session) {
+			if (isExsistsInFavorites) {
+				deleteFavoritesItem(card);
 
-			return;
+				return;
+			}
+			addToFavorites(card);
 		}
-		addToFavourites(card);
 	};
 
 	return (
@@ -58,15 +64,13 @@ const CardItem: FC<CardType> = ({ card }) => {
 				<div className='relative flex justify-center'>
 					<Button
 						title={
-							isExsistsInFavourites
-								? 'Remove from favourite'
-								: 'Add to favourite'
+							isExsistsInFavorites ? 'Remove from favorite' : 'Add to favorite'
 						}
 						variant='outline'
 						className='absolute top-2 -right-3 p-1 max-h-8 max-w-8 rounded-full'
-						onClick={handleToggleToFavourites}
+						onClick={handleToggleToFavorites}
 					>
-						{isExsistsInFavourites ? (
+						{isExsistsInFavorites ? (
 							<LiaHeartSolid
 								className='fill-gray-600'
 								size='20'

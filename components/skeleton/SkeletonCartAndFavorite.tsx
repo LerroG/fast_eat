@@ -5,7 +5,7 @@ type SkeletonTypeProps = {
 	type: string;
 };
 
-const SkeletonCartAndFavourite: FC<SkeletonTypeProps> = ({ type }) => {
+const SkeletonCartAndFavorite: FC<SkeletonTypeProps> = ({ type }) => {
 	return (
 		<div className='mx-auto max-w-screen-xl h-[120px] flex justify-between items-center border px-3 my-2 rounded-md'>
 			<div className='flex'>
@@ -29,4 +29,4 @@ const SkeletonCartAndFavourite: FC<SkeletonTypeProps> = ({ type }) => {
 	);
 };
 
-export default SkeletonCartAndFavourite;
+export default SkeletonCartAndFavorite;

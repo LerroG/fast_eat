@@ -11,20 +11,23 @@ export const calcTotalPrice = (items: ICart[]) => {
 };
 
 export const capitalize = (str: string) => {
-  if (!str) return str;
-  return str[0].toUpperCase() + str.slice(1);
+	if (!str) return str;
+	return str[0].toUpperCase() + str.slice(1);
 };
 
-export const debounce = <F extends (...args: any[]) => any>(func: F, waitFor: number) => {
-  let timeout: ReturnType<typeof setTimeout> | null = null;
+export const debounce = <F extends (...args: any[]) => any>(
+	func: F,
+	waitFor: number
+) => {
+	let timeout: ReturnType<typeof setTimeout> | null = null;
 
-  const debounced = (...args: Parameters<F>) => {
-    if (timeout !== null) {
-      clearTimeout(timeout);
-      timeout = null;
-    }
-    timeout = setTimeout(() => func(...args), waitFor);
-  };
+	const debounced = (...args: Parameters<F>) => {
+		if (timeout !== null) {
+			clearTimeout(timeout);
+			timeout = null;
+		}
+		timeout = setTimeout(() => func(...args), waitFor);
+	};
 
-  return debounced as (...args: Parameters<F>) => ReturnType<F>;
+	return debounced as (...args: Parameters<F>) => ReturnType<F>;
 };

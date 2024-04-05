@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { LiaUserCircle } from 'react-icons/lia';
 
-const NoFavourite = () => {
+const NoFavorite = () => {
 	return (
 		<div className='flex gap-2 items-center justify-center h-1/2 mx-auto max-w-screen-xl'>
-			<span className='font-semibold text-lg'>To view your favourites please</span>
+			<span className='font-semibold text-lg'>To view your favorites please</span>
 			<Link href='/auth'>
 				<Button className='flex items-center gap-1'>
 					<span>
@@ -18,4 +18,4 @@ const NoFavourite = () => {
 	);
 };
 
-export default NoFavourite;
+export default NoFavorite;

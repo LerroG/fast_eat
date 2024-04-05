@@ -20,7 +20,7 @@ const CategoriesDropdown: FC<CategoriesDropdownType> = ({ categories }) => {
 	const dispatch = useAppDispatch();
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger>
+			<DropdownMenuTrigger asChild>
 				<Button
 					className='min-w-32'
 					variant='outline'
@@ -33,6 +33,7 @@ const CategoriesDropdown: FC<CategoriesDropdownType> = ({ categories }) => {
 					{categories.map((item) => (
 						<DropdownMenuItem
 							onClick={() => dispatch(categoryChange(item.name))}
+							key={item.name}
 						>
 							<span>{item.name}</span>
 						</DropdownMenuItem>

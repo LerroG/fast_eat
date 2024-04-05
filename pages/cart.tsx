@@ -7,7 +7,7 @@ const CartPage = () => {
 	const { data: session } = useSession();
 	return (
 		<AppLayout title='Cart'>
-			<div className='mx-6'>{session?.user ? <CartList /> : <NoCart />}</div>
+			<div className='sm:mx-6'>{session?.user ? <CartList /> : <NoCart />}</div>
 		</AppLayout>
 	);	
 };

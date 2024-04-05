@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import CartItem from './CartItem';
 import { useAppSelector } from '@/redux/storeHooks';
-import SkeletonCartAndFavourite from '../skeleton/SkeletonCartAndFavourite';
+import SkeletonCartAndFavorite from '../skeleton/SkeletonCartAndFavorite';
 
 const CartList: FC = () => {
 	const totalCartCost = useAppSelector(
@@ -15,7 +15,7 @@ const CartList: FC = () => {
 			<>
 				{[
 					...new Array(4).map((_, index) => (
-						<SkeletonCartAndFavourite
+						<SkeletonCartAndFavorite
 							type='cart'
 							key={index}
 						/>
@@ -34,7 +34,7 @@ const CartList: FC = () => {
 						cartItem={cartItem}
 					/>
 				))}
-			<div className='flex gap-2 justify-end items-end mt-4'>
+			<div className='flex gap-2 justify-end items-end mt-4 max-sm:justify-center'>
 				<div className='bg-orange-400 p-2 rounded text-white'>
 					<span className='text-xl'>Total Cost: </span>
 					<span className='font-bold text-2xl'>{totalCartCost}</span>

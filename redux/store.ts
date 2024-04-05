@@ -2,25 +2,25 @@ import { configureStore } from '@reduxjs/toolkit';
 import { productsApi } from './productsApi';
 import filterSlice from './filter/filter.slice';
 import cartSlice from './cart/cart.slice';
-import favouriteSlice from './favourite/favourite.slice';
+import favoriteSlice from './favorite/favorite.slice';
 import { cartApi } from './cartApi';
-import { favouriteApi } from './favouriteApi';
+import { favoriteApi } from './favoriteApi';
 
 export const store = configureStore({
 	reducer: {
-		favouriteSlice,
+		favoriteSlice,
 		filterSlice,
 		cartSlice,
 		[productsApi.reducerPath]: productsApi.reducer,
 		[cartApi.reducerPath]: cartApi.reducer,
-		[favouriteApi.reducerPath]: favouriteApi.reducer,
+		[favoriteApi.reducerPath]: favoriteApi.reducer,
 	},
 
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat([
 			productsApi.middleware,
 			cartApi.middleware,
-			favouriteApi.middleware,
+			favoriteApi.middleware,
 		]),
 });
 

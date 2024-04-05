@@ -26,7 +26,7 @@ const Counter: FC<CounterType> = ({ counter, id }) => {
 	};
 
 	return (
-		<div className='flex items-center gap-2 border p-1 rounded-full h-10'>
+		<div className='flex items-center gap-2 border p-1 rounded-full h-10 max-sm:gap-0 max-sm:p-0'>
 			<LiaMinusCircleSolid
 				size='28'
 				className='hover:cursor-pointer hover:text-gray-400'

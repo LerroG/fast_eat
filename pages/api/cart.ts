@@ -14,6 +14,7 @@ export default async function handler(
 		if (currentUserEmail) {
 			res.status(200).json(currentUserCart?.cart);
 		}
+		res.status(200).json([]);
 	}
 
 	if (req.method === 'PATCH') {

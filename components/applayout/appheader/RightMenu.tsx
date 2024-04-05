@@ -4,11 +4,26 @@ import { Button } from '@/components/ui/button';
 import { FC } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 
-const headerCartAndFavourites = [
+type buttonsType = {
+	name: string;
+	icon: JSX.Element;
+	url: string;
+	variant:
+		| 'ghost'
+		| 'link'
+		| 'default'
+		| 'destructive'
+		| 'outline'
+		| 'secondary'
+		| null
+		| undefined;
+};
+
+const headerCartAndFavorites: buttonsType[] = [
 	{
-		name: 'Favourite',
+		name: 'Favorite',
 		icon: <LiaHeart size='26' />,
-		url: '/favourite',
+		url: '/favorite',
 		variant: 'ghost',
 	},
 	{
@@ -23,7 +38,7 @@ const RightMenu: FC = () => {
 	const { data: session } = useSession();
 
 	const handleSubmit = async () => {
-		await signOut({ redirect: false });
+		await signOut();
 	};
 
 	return (
@@ -50,7 +65,7 @@ const RightMenu: FC = () => {
 					</Link>
 				)}
 
-				{headerCartAndFavourites.map(({ name, icon, url, variant }) => (
+				{headerCartAndFavorites.map(({ name, icon, url, variant }) => (
 					<Link
 						href={url}
 						key={url}

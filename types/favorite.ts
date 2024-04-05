@@ -1,4 +1,4 @@
-export interface IFavourite {
+export interface IFavorite {
 	id: string;
 	title: string;
 	price: string;

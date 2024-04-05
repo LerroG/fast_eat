@@ -14,8 +14,8 @@ const menu = [
 		icon: <LiaHomeSolid size='26' />,
 	},
 	{
-		url: '/favourite',
-		name: 'Favourite',
+		url: '/favorite',
+		name: 'Favorite',
 		icon: <LiaHeart size='26' />,
 	},
 	{
@@ -36,7 +36,7 @@ const MobileNav = () => {
 		<>
 			<ul className='flex justify-between h-14 py-1 w-full sm:hidden bg-white fixed z-10 bottom-0 border-t-2'>
 				{menu.map((item) => (
-					<li className='flex-col w-1/4 h-full'>
+					<li className='flex-col w-1/4 h-full' key={item.url}>
 						<Link href={item.url}>
 							<div className='flex justify-center'>{item.icon}</div>
 							<div className='flex justify-center'>{item.name}</div>

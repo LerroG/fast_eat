@@ -1,7 +1,7 @@
-export const favourites = [
+export const favorites = [
 	{
 		email: 'user@dev.com',
-		favourite: [
+		favorite: [
 			{
 				id: '4',
 				title: 'Pizza Margarita',
