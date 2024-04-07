@@ -1,14 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { carts } from './data/carts';
 import { getToken } from 'next-auth/jwt';
+import { ICart } from '@/types/cart';
+
+type currentUserCart = {
+	email: string;
+	cart: ICart[];
+};
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	const token = await getToken({ req });
-	const currentUserEmail = token?.email;
-	const currentUserCart = carts.find((item) => item.email === currentUserEmail);
+	const currentUserEmail = token?.email as string;
+	const currentUserCart =
+		carts.find((item) => item.email === currentUserEmail) ||
+		({} as currentUserCart);
 
 	if (req.method === 'GET') {
 		if (currentUserEmail) {
@@ -58,7 +66,7 @@ export default async function handler(
 			);
 
 			if (!addToCart) {
-				currentUserCart?.cart.push(cartItem)
+				currentUserCart?.cart.push(cartItem);
 				res.status(200).json(currentUserCart);
 			}
 		}
