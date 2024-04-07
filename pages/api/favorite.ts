@@ -1,16 +1,23 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { favorites } from './data/favorites';
 import { getToken } from 'next-auth/jwt';
+import { IFavorite } from '@/types/favorite';
+
+type currentUserFavoriteType = {
+	email: string;
+	favorite: IFavorite[];
+};
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	const token = await getToken({ req });
-	const currentUserEmail = token?.email;
+	const currentUserEmail = token?.email as string;
 	const currentUserFavorites = favorites.find(
 		(item) => item.email === currentUserEmail
-	);
+	) ||
+	({} as currentUserFavoriteType);
 
 	if (req.method === 'GET') {
 		if (currentUserEmail) {

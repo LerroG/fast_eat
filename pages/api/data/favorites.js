@@ -8,7 +8,6 @@ export const favorites = [
 				price: '70000',
 				image: '/pizza_margarita_1.jpg',
 				category: 'pizza',
-				totalCount: 2,
 			},
 			{
 				id: '5',
@@ -16,7 +15,6 @@ export const favorites = [
 				price: '8000',
 				image: '/coca_cola_1.jpg',
 				category: 'drinks',
-				totalCount: 3,
 			},
 		],
 	},

@@ -3,7 +3,7 @@ import { carts } from './data/carts';
 import { getToken } from 'next-auth/jwt';
 import { ICart } from '@/types/cart';
 
-type currentUserCart = {
+type currentUserCartType = {
 	email: string;
 	cart: ICart[];
 };
@@ -16,7 +16,7 @@ export default async function handler(
 	const currentUserEmail = token?.email as string;
 	const currentUserCart =
 		carts.find((item) => item.email === currentUserEmail) ||
-		({} as currentUserCart);
+		({} as currentUserCartType);
 
 	if (req.method === 'GET') {
 		if (currentUserEmail) {
