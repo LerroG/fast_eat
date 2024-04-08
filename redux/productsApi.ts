@@ -1,17 +1,17 @@
 import { IProduct } from '@/types/product';
 import { ICategory } from '@/types/categories';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { FilterState } from './filter/filter.slice';
+import { IFilter } from '@/types/filter';
 
 export const productsApi = createApi({
 	reducerPath: 'productsApi',
 	baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_BASE_URL }),
 	tagTypes: ['Products'],
 	endpoints: (builder) => ({
-		getProducts: builder.query<IProduct[], FilterState>({
+		getProducts: builder.query<IProduct[], IFilter>({
 			query: (category) => ({
 				url: '/products',
-				params: { _category: category.category, _search: category.search },
+				params: { category: category.category, search: category.search },
 			}),
 		}),
 		getCategories: builder.query<ICategory[], string>({

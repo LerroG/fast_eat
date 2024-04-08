@@ -1,11 +1,7 @@
+import { IFilter } from '@/types/filter';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export interface FilterState {
-	category: string;
-	search: string;
-}
-
-const initialState: FilterState = {
+const initialState: IFilter = {
 	category: 'All',
 	search: '',
 };
